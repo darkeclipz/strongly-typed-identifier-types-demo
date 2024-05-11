@@ -4,7 +4,7 @@ using static Trade;
 Trade trade = Trade.CreateNew();
 trade.AddOrder(1m, 55000m);
 
-class Order 
+class Order
 {
     public readonly record struct OrderId(Guid Value)
     {
@@ -20,18 +20,13 @@ class Order
 
     public virtual Trade? Trade { get; set; }
 
-    public static Order CreateNew(TradeId tradeId, PositiveDecimal quantity, PositiveDecimal price)
+    public static Order CreateNew(TradeId tradeId, PositiveDecimal quantity, PositiveDecimal price) => new()
     {
-        var order = new Order
-        {
-            Id = OrderId.CreateNew(),
-            TradeId = tradeId,
-            Quantity = quantity,
-            Price = price,
-        };
-
-        return order;
-    }
+        Id = OrderId.CreateNew(),
+        TradeId = tradeId,
+        Quantity = quantity,
+        Price = price,
+    };
 
     public override string ToString()
     {
@@ -41,13 +36,13 @@ class Order
 
 readonly record struct PositiveDecimal(decimal Value)
 {
-    public decimal Value { get; init; } = 
-        Value >= 0m ? Value 
+    public decimal Value { get; init; } =
+        Value >= 0m ? Value
         : throw new ArgumentException("Value must be positive.");
 
     public static PositiveDecimal CreateNew(decimal value) => new(value);
     public static implicit operator decimal(PositiveDecimal value) => value.Value;
-    public static implicit operator PositiveDecimal(decimal value) => new (value);
+    public static implicit operator PositiveDecimal(decimal value) => new(value);
 }
 
 class Trade
@@ -90,7 +85,7 @@ class TradeDbContext : DbContext
         modelBuilder.Entity<Order>()
             .Property(order => order.Id)
             .HasConversion(id => id.Value, value => new(value));
-            
+
         modelBuilder.Entity<Order>()
             .Property(order => order.TradeId)
             .HasConversion(id => id.Value, value => new(value));
