@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StrongTypedIndex")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1b294096d73ac174b3f1687e5458e7473a7bcc8b")]
 [assembly: System.Reflection.AssemblyProductAttribute("StrongTypedIndex")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StrongTypedIndex")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
